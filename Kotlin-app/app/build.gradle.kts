@@ -74,10 +74,13 @@ dependencies {
     //Splash Api
     implementation("androidx.core:core-splashscreen:1.0.1")
 
+    //Navigation
+    val navVersion = "2.5.3"
+    implementation("androidx.navigation:navigation-compose:$navVersion")
+
     /*
     //Compose Navigation
     def nav_version = "2.6.0"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
 
     //Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.45")
