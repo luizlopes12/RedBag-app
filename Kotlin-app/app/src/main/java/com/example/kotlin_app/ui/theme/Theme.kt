@@ -15,13 +15,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Orange1,
-    secondary = Orange2,
-    tertiary = Orange3,
-    background = White,
-)
-
 private val LightColorScheme = lightColorScheme(
     primary = Orange1,
     secondary = Orange2,
@@ -52,7 +45,7 @@ fun KotlinappTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
+        darkTheme -> LightColorScheme
         else -> LightColorScheme
     }
     val view = LocalView.current

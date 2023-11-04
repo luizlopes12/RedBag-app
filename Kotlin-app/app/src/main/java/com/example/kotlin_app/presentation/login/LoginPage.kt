@@ -1,13 +1,16 @@
 package com.example.kotlin_app.presentation.login
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.material3.TextField
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,14 +19,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,14 +51,18 @@ import androidx.compose.ui.zIndex
 import com.example.kotlin_app.R
 import com.example.kotlin_app.ui.theme.WhiteGray
 import com.example.kotlin_app.ui.theme.Black
+import com.example.kotlin_app.ui.theme.Orange1
+import com.example.kotlin_app.ui.theme.Orange3
+import com.example.kotlin_app.ui.theme.Orange4
+import com.example.kotlin_app.ui.theme.White
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginPage() {
-    var email by remember { mutableStateOf("") }
-    var emailPlaceholder by remember { mutableStateOf("Email") }
-    var password by remember { mutableStateOf("") }
-    var passwordPlaceholder by remember { mutableStateOf("Senha") }
+    var email = remember { mutableStateOf("") }
+    var password = remember { mutableStateOf("") }
 
     MaterialTheme {
         Surface(
@@ -74,42 +84,39 @@ fun LoginPage() {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(.9f)
-                        .padding(horizontal = 16.dp),
+                        .padding(horizontal = 2.dp),
                 ){
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
                     ) {
-
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(120.dp),
+                            horizontalArrangement = Arrangement.Center,
+                        ){
+                            Image(
+                                modifier = Modifier.fillMaxSize(),
+                                painter = painterResource(id = R.drawable.ic_logo),
+                                contentDescription = null
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(14.dp))
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth(),
                         ) {
-                                 BasicTextField(
-                                     value = email,
-                                     onValueChange = { email = it; emailPlaceholder = ""
-                                     },
-                                     modifier = Modifier
-                                         .fillMaxWidth()
-                                         .background(WhiteGray)
-                                         .padding(
-                                             top = 10.dp,
-                                             bottom = 10.dp,
-                                             start = 5.dp,
-                                             end = 5.dp
-                                         ),
-                                 ) {
-                                     Text(
-                                         text = email,
-                                         style = MaterialTheme.typography.bodyLarge,
-                                         color = Black,
-                                     )
-                                     Text(
-                                         text = emailPlaceholder,
-                                         style = MaterialTheme.typography.bodyLarge,
-                                         color = Color.Gray
-                                     )
-                                 }
+                            TextField(
+                                modifier = Modifier
+                                    .background(WhiteGray)
+                                    .fillMaxWidth(),
+                                value = email.value,
+                                onValueChange = {
+                                    email.value = it
+                                },
+                                label = { Text("Email", color = Orange1) },
+                                )
                              }
 
                         Spacer(modifier = Modifier.height(10.dp))
@@ -118,31 +125,37 @@ fun LoginPage() {
                             modifier = Modifier
                                 .fillMaxWidth()
                         ) {
-                            BasicTextField(
-                                value = password,
-                                onValueChange = { password = it; passwordPlaceholder = ""
+                            TextField(
+                                modifier = Modifier
+                                    .background(WhiteGray)
+                                    .fillMaxWidth(),
+                                value = password.value,
+                                onValueChange = {
+                                    password.value = it
                                 },
+                                label = { Text("Senha", color = Orange1)  },
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        ) {
+                            Button(
+                                onClick = { /*TODO*/ },
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .background(WhiteGray)
-                                    .padding(
-                                        top = 10.dp,
-                                        bottom = 10.dp,
-                                        start = 5.dp,
-                                        end = 5.dp
-                                    ),
-                            ) {
-                                Text(
-                                    text = password,
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = Black,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
+                                    .height(50.dp)
+                                    .background(color = Orange4, shape = RoundedCornerShape(5.dp)),
+                                shape = RoundedCornerShape(5.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    contentColor = White,
                                 )
+                                ){
                                 Text(
-                                    text = passwordPlaceholder,
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    color = Color.Gray
+                                    text = "Entrar",
+                                    color = Color.White,
+                                    style = MaterialTheme.typography.bodyLarge
                                 )
                             }
                         }
