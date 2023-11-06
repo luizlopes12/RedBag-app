@@ -12,7 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.kotlin_app.presentation.login.LoginPage
+import com.example.kotlin_app.presentation.register.OnBoardingScreen
 import com.example.kotlin_app.ui.theme.KotlinappTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,8 +25,10 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             KotlinappTheme {
-                Box(modifier = Modifier.fillMaxSize()){
-                    LoginPage()
+                val navController = rememberNavController()
+                NavHost(navController = navController, startDestination = "signin") {
+                    composable("signin") { LoginPage(navController) }
+                    composable("signup") { OnBoardingScreen(navController) }
                 }
             }
         }

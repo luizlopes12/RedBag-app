@@ -48,21 +48,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.navigation.NavController
 import com.example.kotlin_app.R
 import com.example.kotlin_app.ui.theme.WhiteGray
 import com.example.kotlin_app.ui.theme.Black
+import com.example.kotlin_app.ui.theme.Gray
 import com.example.kotlin_app.ui.theme.Orange1
 import com.example.kotlin_app.ui.theme.Orange3
 import com.example.kotlin_app.ui.theme.Orange4
 import com.example.kotlin_app.ui.theme.White
+import com.example.kotlin_app.utils.NetworkUtils.Companion.getRetrofitInstance
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginPage() {
+fun LoginPage(navController: NavController) {
     var email = remember { mutableStateOf("") }
     var password = remember { mutableStateOf("") }
+    // var retrofit = getRetrofitInstance("https://red-bag-api.onrender.com/")
 
     MaterialTheme {
         Surface(
@@ -111,6 +115,15 @@ fun LoginPage() {
                                 modifier = Modifier
                                     .background(WhiteGray)
                                     .fillMaxWidth(),
+                                colors = TextFieldDefaults.textFieldColors(
+                                    cursorColor = Orange3,
+                                    textColor = Black,
+                                    containerColor = WhiteGray,
+                                    focusedIndicatorColor = Orange3,
+                                    unfocusedIndicatorColor = Gray,
+                                    disabledIndicatorColor = WhiteGray,
+                                    errorIndicatorColor = Color.Red,
+                                ),
                                 value = email.value,
                                 onValueChange = {
                                     email.value = it
@@ -129,6 +142,15 @@ fun LoginPage() {
                                 modifier = Modifier
                                     .background(WhiteGray)
                                     .fillMaxWidth(),
+                                colors = TextFieldDefaults.textFieldColors(
+                                    cursorColor = Orange3,
+                                    textColor = Black,
+                                    containerColor = WhiteGray,
+                                    focusedIndicatorColor = Orange3,
+                                    unfocusedIndicatorColor = Gray,
+                                    disabledIndicatorColor = WhiteGray,
+                                    errorIndicatorColor = Color.Red,
+                                ),
                                 value = password.value,
                                 onValueChange = {
                                     password.value = it
@@ -142,23 +164,28 @@ fun LoginPage() {
                                 .fillMaxWidth()
                         ) {
                             Button(
-                                onClick = { /*TODO*/ },
+                                onClick = {
+                                },
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(50.dp)
-                                    .background(color = Orange4, shape = RoundedCornerShape(5.dp)),
-                                shape = RoundedCornerShape(5.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    contentColor = White,
-                                )
+                                    .background(Orange4, RoundedCornerShape(5.dp)),
+                                    colors = ButtonDefaults
+                                        .buttonColors(
+                                        contentColor = White,
+                                        containerColor = Orange4
+                                    )
                                 ){
                                 Text(
                                     text = "Entrar",
-                                    color = Color.White,
+                                    color = White,
                                     style = MaterialTheme.typography.bodyLarge
                                 )
                             }
                         }
+                        Spacer(modifier = Modifier
+                            .height(60.dp)
+                        )
                     }
                 }
                 Box() {
@@ -170,8 +197,10 @@ fun LoginPage() {
                     ) {
                     TextButton(
                         modifier = Modifier
-                            .offset(y = (20).dp),
-                        onClick = { /*TODO*/ },
+                            .offset(y = (10).dp),
+                        onClick = {
+                            navController.navigate("signup")
+                                  },
                     ) {
                             Text(
                                 text = "Não possui uma conta?",
@@ -179,10 +208,11 @@ fun LoginPage() {
                                 style = MaterialTheme.typography.bodyLarge,
                                 textDecoration = TextDecoration.Underline
                             )
-
                         }
                     }
-                        Image(
+
+
+                    Image(
                             modifier = Modifier
                                 .fillMaxWidth(),
                             painter = painterResource(id = R.drawable.login_bottom_illustration),
@@ -194,8 +224,10 @@ fun LoginPage() {
     }
 }
 
+/*
 @Preview
 @Composable
 fun LoginPagePreview() {
     LoginPage()
 }
+*/
