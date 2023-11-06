@@ -15,6 +15,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.kotlin_app.presentation.home.HomePage
 import com.example.kotlin_app.presentation.login.LoginPage
 import com.example.kotlin_app.presentation.register.OnBoardingScreen
 import com.example.kotlin_app.ui.theme.KotlinappTheme
@@ -29,6 +30,7 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = "signin") {
                     composable("signin") { LoginPage(navController) }
                     composable("signup") { OnBoardingScreen(navController) }
+                    composable("home") { HomePage(navController) }
                 }
             }
         }
