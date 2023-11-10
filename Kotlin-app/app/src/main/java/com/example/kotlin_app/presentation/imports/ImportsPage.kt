@@ -1,6 +1,7 @@
-package com.example.kotlin_app.presentation.home
+package com.example.kotlin_app.presentation.imports
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,7 +22,7 @@ import com.example.kotlin_app.R
 import com.example.kotlin_app.presentation.navbar.Navbar
 
 @Composable
-fun HomePage(navController: NavController) {
+fun ImportsPage(navController: NavController) {
     Box(modifier = Modifier
         .fillMaxSize()
     ) {
@@ -30,10 +33,10 @@ fun HomePage(navController: NavController) {
             Image(
                 modifier = Modifier
                     .fillMaxWidth(),
-                painter = painterResource(id = R.drawable.home_fakepage),
+                painter = painterResource(id = R.drawable.imports_fakepage),
                 contentDescription = null,
             )
-            Navbar(navbarSelected = 0, navController = navController)
+            Navbar(navbarSelected = 2, navController = navController )
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.kotlin_app.presentation.home
+package com.example.kotlin_app.presentation.analisis
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -19,7 +19,7 @@ import com.example.kotlin_app.R
 import com.example.kotlin_app.presentation.navbar.Navbar
 
 @Composable
-fun HomePage(navController: NavController) {
+fun AnalisisPage(navController: NavController) {
     Box(modifier = Modifier
         .fillMaxSize()
     ) {
@@ -30,10 +30,10 @@ fun HomePage(navController: NavController) {
             Image(
                 modifier = Modifier
                     .fillMaxWidth(),
-                painter = painterResource(id = R.drawable.home_fakepage),
+                painter = painterResource(id = R.drawable.analyze_fakepage),
                 contentDescription = null,
             )
-            Navbar(navbarSelected = 0, navController = navController)
+            Navbar(navbarSelected = 1, navController = navController)
         }
     }
 }

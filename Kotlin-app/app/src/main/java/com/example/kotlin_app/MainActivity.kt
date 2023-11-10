@@ -1,6 +1,9 @@
 package com.example.kotlin_app
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
@@ -15,7 +18,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.kotlin_app.presentation.analisis.AnalisisPage
 import com.example.kotlin_app.presentation.home.HomePage
+import com.example.kotlin_app.presentation.imports.ImportsPage
 import com.example.kotlin_app.presentation.login.LoginPage
 import com.example.kotlin_app.presentation.register.OnBoardingScreen
 import com.example.kotlin_app.ui.theme.KotlinappTheme
@@ -31,6 +36,8 @@ class MainActivity : ComponentActivity() {
                     composable("signin") { LoginPage(navController) }
                     composable("signup") { OnBoardingScreen(navController) }
                     composable("home") { HomePage(navController) }
+                    composable("analyze") { AnalisisPage(navController) }
+                    composable("imports") { ImportsPage(navController) }
                 }
             }
         }
