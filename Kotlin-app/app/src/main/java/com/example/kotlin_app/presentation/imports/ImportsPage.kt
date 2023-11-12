@@ -19,7 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.kotlin_app.R
-import com.example.kotlin_app.presentation.navbar.Navbar
+import com.example.kotlin_app.presentation.shared.header.Header
+import com.example.kotlin_app.presentation.shared.navbar.Navbar
 
 @Composable
 fun ImportsPage(navController: NavController) {
@@ -30,12 +31,7 @@ fun ImportsPage(navController: NavController) {
             .fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Image(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                painter = painterResource(id = R.drawable.imports_fakepage),
-                contentDescription = null,
-            )
+            Header(navController = navController)
             Navbar(navbarSelected = 2, navController = navController )
         }
     }

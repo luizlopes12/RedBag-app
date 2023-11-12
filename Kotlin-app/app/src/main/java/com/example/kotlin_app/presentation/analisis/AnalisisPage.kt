@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,7 +18,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.kotlin_app.R
-import com.example.kotlin_app.presentation.navbar.Navbar
+import com.example.kotlin_app.presentation.shared.header.Header
+import com.example.kotlin_app.presentation.shared.navbar.Navbar
 
 @Composable
 fun AnalisisPage(navController: NavController) {
@@ -27,12 +30,7 @@ fun AnalisisPage(navController: NavController) {
             .fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Image(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                painter = painterResource(id = R.drawable.analyze_fakepage),
-                contentDescription = null,
-            )
+            Header(navController = navController)
             Navbar(navbarSelected = 1, navController = navController)
         }
     }

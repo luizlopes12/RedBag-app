@@ -1,4 +1,4 @@
-package com.example.kotlin_app.presentation.navbar
+package com.example.kotlin_app.presentation.shared.navbar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,7 +39,7 @@ fun Navbar(navbarSelected: Int, navController: NavController) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 50.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
                 Image(
