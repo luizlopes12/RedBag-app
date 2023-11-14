@@ -1,6 +1,7 @@
 package com.example.kotlin_app.presentation.configs
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
@@ -27,6 +29,7 @@ import com.example.kotlin_app.presentation.shared.header.Header
 import com.example.kotlin_app.presentation.shared.navbar.Navbar
 import com.example.kotlin_app.ui.theme.Black
 import com.example.kotlin_app.ui.theme.Gray
+import com.example.kotlin_app.ui.theme.Red
 
 @Composable
 fun ConfigsPage(navController: NavController) {
@@ -37,7 +40,8 @@ fun ConfigsPage(navController: NavController) {
         Header(navController = navController)
         Column(modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp),
+            .padding(10.dp)
+            .offset(y = (-50).dp),
         ) {
             Row(){
                 Image(
@@ -79,17 +83,18 @@ fun ConfigsPage(navController: NavController) {
             ) {
                 Image(
                     modifier = Modifier
-                        .width(35.dp),
+                        .width(30.dp),
                     painter = painterResource(id = R.drawable.edit__account_icon),
                     contentDescription = null
                 )
                 Text(
                     modifier = Modifier
-                        .padding( 10.dp, 0.dp, 0.dp, 0.dp),
+                        .padding( 10.dp, 0.dp, 0.dp, 0.dp)
+                        .offset(y = (4).dp),
                     text = "Editar perfil",
                     color = Black,
                     style = androidx.compose.ui.text.TextStyle(
-                        fontSize = 28.sp,
+                        fontSize = 26.sp,
                         fontWeight = Bold,
                     )
                 )
@@ -105,22 +110,62 @@ fun ConfigsPage(navController: NavController) {
             ) {
                 Image(
                     modifier = Modifier
-                        .width(35.dp),
-                    painter = painterResource(id = R.drawable.edit__account_icon),
+                        .width(30.dp),
+                    painter = painterResource(id = R.drawable.support__icon),
                     contentDescription = null
                 )
                 Text(
                     modifier = Modifier
-                        .padding( 10.dp, 0.dp, 0.dp, 0.dp),
+                        .padding( 10.dp, 0.dp, 0.dp, 0.dp)
+                        .offset(y = (4).dp),
                     text = "Suporte",
                     color = Black,
                     style = androidx.compose.ui.text.TextStyle(
-                        fontSize = 28.sp,
+                        fontSize = 26.sp,
                         fontWeight = Bold,
                     )
                 )
             }
-            Spacer(modifier = Modifier.height(80.dp))
+            Spacer(modifier = Modifier.height(70.dp))
+            Row(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Row(
+                    Modifier
+                        .background(
+                            Red.copy(alpha = 0.05f),
+                            shape = androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                        .fillMaxWidth(.4f)
+                        .height(50.dp)
+                        .clickable {
+                            navController.navigate("signin")
+                        },
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+
+                ) {
+                    Image(
+                        modifier = Modifier
+                            .width(30.dp),
+                        painter = painterResource(id = R.drawable.logout__icon),
+                        contentDescription = null
+                    )
+                    Text(
+                        modifier = Modifier
+                            .padding(10.dp, 0.dp, 0.dp, 0.dp),
+                        text = "Sair",
+                        color = Red,
+                        style = androidx.compose.ui.text.TextStyle(
+                            fontSize = 24.sp,
+                            fontWeight = Bold,
+                        )
+                    )
+                }
+            }
         }
         Navbar(navbarSelected = 4, navController = navController)
     }

@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             KotlinappTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "configs") {
+                NavHost(navController = navController, startDestination = "home") {
                     composable("signin") { LoginPage(navController) }
                     composable("signup") { OnBoardingScreen(navController) }
                     composable("home") { HomePage(navController) }

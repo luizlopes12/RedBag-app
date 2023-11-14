@@ -2,8 +2,11 @@ package com.example.kotlin_app.presentation.shared.header
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
@@ -22,7 +25,8 @@ import com.example.kotlin_app.ui.theme.Black
 fun Header(navController: NavController) {
     Column(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .height(210.dp),
         horizontalAlignment = Alignment.End
     ) {
         Image(
@@ -40,14 +44,20 @@ fun Header(navController: NavController) {
             painter = painterResource(id = R.drawable.config__icon),
             contentDescription = null
         )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .offset(y = (-105).dp),
+            horizontalArrangement = Arrangement.Center
+        ){
         Text(
             text = "23 de Novembro",
-            modifier = Modifier
-                .offset(y = (-105).dp, x = (-130).dp),
             color = Black,
             style = androidx.compose.ui.text.TextStyle(
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-            ))
+            )
+        )
+        }
     }
 }
