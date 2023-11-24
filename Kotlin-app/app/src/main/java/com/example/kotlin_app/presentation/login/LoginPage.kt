@@ -1,5 +1,6 @@
     package com.example.kotlin_app.presentation.login
     
+    import RetrofitHelper.Companion.getRetrofitInstance
     import androidx.compose.foundation.Image
     import androidx.compose.foundation.background
     import androidx.compose.material3.TextField
@@ -34,7 +35,6 @@
     import androidx.compose.ui.text.style.TextDecoration
     import androidx.compose.ui.unit.dp
     import androidx.compose.ui.zIndex
-    import android.util.Log
     import androidx.navigation.NavController
     import com.example.kotlin_app.R
     import com.example.kotlin_app.ui.theme.WhiteGray
@@ -44,15 +44,9 @@
     import com.example.kotlin_app.ui.theme.Orange3
     import com.example.kotlin_app.ui.theme.Orange4
     import com.example.kotlin_app.ui.theme.White
+    import com.example.kotlin_app.utils.ApiService
     import com.google.gson.Gson
-    import kotlinx.coroutines.Dispatchers
-    import kotlinx.coroutines.GlobalScope
     import kotlinx.coroutines.launch
-    import okhttp3.MediaType
-    import okhttp3.RequestBody
-    import retrofit2.Response
-    import retrofit2.http.Body
-    import retrofit2.http.POST
     import java.io.IOException
     
     @OptIn(ExperimentalMaterial3Api::class)
@@ -63,7 +57,10 @@
         var warningText = remember { mutableStateOf("") }
         val coroutineScope = rememberCoroutineScope()
         val gson = Gson()
-    
+
+        val retrofitInstance = getRetrofitInstance("https://red-bag-api-distroless.onrender.com/")
+        val authService = retrofitInstance.create(ApiService::class.java)
+
         MaterialTheme {
             Surface(
                 modifier = Modifier.fillMaxSize(),
@@ -163,7 +160,21 @@
                                 Button(
                                     onClick = {
                                         val userLoginRequest = UserLoginRequestModel(email = email.value, password = password.value)
-                                        navController.navigate("home")
+
+                                        coroutineScope.launch {
+                                            try {
+                                                val loginResponse = authService.loginUser(userLoginRequest)
+
+                                                if (loginResponse.isSuccessful) {
+                                                    navController.navigate("home")
+                                                } else {
+                                                    print("Login deu merda na linha 181 LoginPage")
+                                                }
+                                            } catch (e: IOException) {
+                                                // Handle network error
+                                                print("Network error")
+                                            }
+                                        }
                                     },
                                     modifier = Modifier
                                         .fillMaxWidth()

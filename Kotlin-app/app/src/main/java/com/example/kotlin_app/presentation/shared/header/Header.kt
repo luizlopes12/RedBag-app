@@ -14,15 +14,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.kotlin_app.R
 import com.example.kotlin_app.ui.theme.Black
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 @Composable
 fun Header(navController: NavController) {
+    val currentDate = LocalDate.now()
+    val currentDay = currentDate.format(DateTimeFormatter.ofPattern("dd 'de' ")).toString()
+    val currentMonth = currentDate.format(DateTimeFormatter.ofPattern("MMMM")).toString().capitalize()
+    val formattedDate = "$currentDay$currentMonth"
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -51,7 +60,7 @@ fun Header(navController: NavController) {
             horizontalArrangement = Arrangement.Center
         ){
         Text(
-            text = "23 de Novembro",
+            text = formattedDate,
             color = Black,
             style = androidx.compose.ui.text.TextStyle(
                 fontSize = 20.sp,

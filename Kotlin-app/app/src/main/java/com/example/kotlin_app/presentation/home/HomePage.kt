@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
@@ -45,13 +47,14 @@ fun HomePage(navController: NavController) {
         .height(50.dp)
     ) {
         Column(modifier = Modifier
+            .verticalScroll(rememberScrollState())
             .fillMaxSize(),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Header(navController = navController)
             Column(
                 modifier = Modifier
-                    .offset(y = (-50).dp)
+                    .offset(y = (-60).dp)
                     .fillMaxWidth()
                     .padding(10.dp),
             ) {
@@ -223,19 +226,28 @@ fun HomePage(navController: NavController) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(320.dp),
+                        .background(
+                            color = White,
+                            shape = RoundedCornerShape(5.dp)
+                        ),
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ){
                     Image(
                         modifier = Modifier
-                            .fillMaxHeight(),
+                            .fillMaxWidth(),
                         painter = painterResource(id = R.drawable.home__graph),
                         contentDescription = null
                     )
                 }
+                Spacer(modifier = Modifier.height(100.dp))
             }
-
+        }
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+        ){
             Navbar(navbarSelected = 0, navController = navController)
         }
     }

@@ -47,7 +47,7 @@ fun Navbar(navbarSelected: Int, navController: NavController) {
             Image(
                 modifier = Modifier
                     .width(if (navbarSelected == 0) 80.dp else 50.dp)
-                    .offset(y = (-40).dp)
+                    .offset(y = if(navbarSelected == 0) (-40).dp else (-20).dp)
                     .clickable {
                         navController.navigate("home")
                     },
@@ -57,7 +57,7 @@ fun Navbar(navbarSelected: Int, navController: NavController) {
             Image(
                 modifier = Modifier
                     .width(if (navbarSelected == 1) 80.dp else 50.dp)
-                    .offset(y = (-40).dp)
+                    .offset(y = if(navbarSelected == 1) (-40).dp else (-20).dp)
                     .clickable {
                         navController.navigate("analyze")
                     },
@@ -67,7 +67,7 @@ fun Navbar(navbarSelected: Int, navController: NavController) {
             Image(
                 modifier = Modifier
                     .width(if (navbarSelected == 2) 80.dp else 50.dp)
-                    .offset(y = (-40).dp)
+                    .offset(y = if(navbarSelected == 2) (-40).dp else (-20).dp)
                     .clickable {
                         navController.navigate("imports")
                     },
