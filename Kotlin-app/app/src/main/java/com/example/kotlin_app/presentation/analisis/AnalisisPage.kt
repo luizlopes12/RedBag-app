@@ -2,6 +2,7 @@ package com.example.kotlin_app.presentation.analisis
 
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
@@ -65,9 +66,10 @@ fun AnalisisPage(navController: NavController, context: Context) {
                 val file = File(fileUri.path ?: "")
                 viewModel.uploadImage(file) { success ->
                     if (success) {
-                        // Handle successful upload
+                        Log.d("Result", "Teste Success")
                     } else {
-                        // Handle failed upload
+                         Thread.sleep(2_000)
+                         navController.navigate("results")
                     }
                 }
             }

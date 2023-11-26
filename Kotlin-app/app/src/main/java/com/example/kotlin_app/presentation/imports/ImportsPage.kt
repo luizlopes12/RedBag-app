@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.kotlin_app.R
+import com.example.kotlin_app.presentation.imports.components.ListCard
 import com.example.kotlin_app.presentation.shared.header.Header
 import com.example.kotlin_app.presentation.shared.navbar.Navbar
 import com.example.kotlin_app.ui.theme.Black
@@ -159,7 +160,8 @@ fun ImportsPage(navController: NavController) {
                         }
                     }
                 }
-
+                Spacer(modifier = Modifier.height(10.dp))
+                ListCard(navController = navController)
             }
         }
         Box(

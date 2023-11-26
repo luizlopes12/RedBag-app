@@ -14,17 +14,13 @@ class FileViewModel(
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     @RequiresApi(Build.VERSION_CODES.S)
-    fun uploadImage(file: File, onUploadResult: (Boolean) -> Unit) {
+    fun uploadImage(file: File, onUploadResult: (Boolean) -> Unit): Boolean {
+        var result = false
         viewModelScope.launch {
-            val result = repository.uploadImage(file)
+            val res = repository.uploadImage(file)
             onUploadResult(result)
-
-            // Log the response to the console
-            if (result) {
-                println("Upload successful!")
-            } else {
-                println("Upload failed.")
-            }
+            result = res
         }
+        return result
     }
 }

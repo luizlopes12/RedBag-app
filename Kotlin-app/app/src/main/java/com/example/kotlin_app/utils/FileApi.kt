@@ -16,7 +16,7 @@ interface FileApi {
     companion object {
         val instance by lazy {
             Retrofit.Builder()
-                .baseUrl("https://red-bag-api-distroless.onrender.com")
+                .baseUrl("https://red-bag-api-distroless.onrender.com/")
                 .build()
                 .create(FileApi::class.java)
         }

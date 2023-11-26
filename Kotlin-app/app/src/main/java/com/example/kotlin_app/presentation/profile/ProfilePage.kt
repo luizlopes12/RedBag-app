@@ -1,7 +1,11 @@
 package com.example.kotlin_app.presentation.profile
 
+import android.app.AlertDialog
+import android.content.Context.MODE_PRIVATE
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,8 +39,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kotlin_app.MainViewModel
 import com.example.kotlin_app.R
 import com.example.kotlin_app.presentation.login.UserLoginRequestModel
+import com.example.kotlin_app.presentation.login.UserRegisterRequestModel
 import com.example.kotlin_app.presentation.shared.header.Header
 import com.example.kotlin_app.presentation.shared.navbar.Navbar
 import com.example.kotlin_app.ui.theme.Black
@@ -54,9 +60,11 @@ import java.io.IOException
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfilePage(navController: NavController) {
-    val name = remember { mutableStateOf("Teste Nome") }
-    val email = remember { mutableStateOf("Teste Email") }
+    val name = remember { mutableStateOf("") }
+    val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
+
+    Log.d("ProfilePage", "UserRegisterRequestModel")
 
     Box(
         modifier = Modifier
@@ -85,7 +93,9 @@ fun ProfilePage(navController: NavController) {
                         Image(
                             modifier = Modifier
                                 .width(50.dp)
-                                .offset(x = (-25).dp),
+                                .offset(x = (-25).dp)
+                                .clickable{
+                                },
                             painter = painterResource(id = R.drawable.delete__user_icon),
                             contentDescription = null
                         )
@@ -195,7 +205,10 @@ fun ProfilePage(navController: NavController) {
                             Text(
                                 text = "Salvar",
                                 color = White,
-                                style = MaterialTheme.typography.bodyLarge
+                                style = androidx.compose.ui.text.TextStyle(
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                )
                             )
                         }
                     }
@@ -211,3 +224,4 @@ fun ProfilePage(navController: NavController) {
         }
     }
 }
+

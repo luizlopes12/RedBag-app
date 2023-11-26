@@ -48,10 +48,12 @@ fun RegisterScreen(navController: NavController) {
     val retrofit = RetrofitHelper.getRetrofitInstance("https://red-bag-api-distroless.onrender.com/")
     val apiService = retrofit.create(ApiService::class.java)
     val scope = rememberCoroutineScope()
-    val name = remember { mutableStateOf("bomdia") }
-    val email = remember { mutableStateOf("bomdia@bomdia.com") }
-    val password = remember { mutableStateOf("bomdia") }
+    val name = remember { mutableStateOf("") }
+    val email = remember { mutableStateOf("") }
+    val password = remember { mutableStateOf("") }
     val username = "user-$randomNumber"
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -131,7 +133,7 @@ fun RegisterScreen(navController: NavController) {
                                         username = username,
                                         password = password.value
                                     )
-                                    Log.d("RegisterScreen", userRegisterRequest.toString())
+
                                     scope.launch {
                                         try {
                                             val registerResponse = apiService.signup(userRegisterRequest)
