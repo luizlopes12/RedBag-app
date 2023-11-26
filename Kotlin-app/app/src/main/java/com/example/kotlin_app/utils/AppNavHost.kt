@@ -14,7 +14,9 @@ import com.example.kotlin_app.presentation.configs.ConfigsPage
 import com.example.kotlin_app.presentation.home.HomePage
 import com.example.kotlin_app.presentation.imports.ImportsPage
 import com.example.kotlin_app.presentation.login.LoginPage
-import com.example.kotlin_app.presentation.register.OnBoardingScreen
+import com.example.kotlin_app.presentation.onboarding.OnBoardingScreen
+import com.example.kotlin_app.presentation.profile.ProfilePage
+import com.example.kotlin_app.presentation.register.RegisterScreen
 
 @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
 @RequiresApi(Build.VERSION_CODES.S)
@@ -22,10 +24,12 @@ import com.example.kotlin_app.presentation.register.OnBoardingScreen
 fun AppNavHost(navController: NavHostController, startDestination: String, context: Context){
     NavHost(navController = navController, startDestination = startDestination) {
         composable("signin") { LoginPage(navController) }
-        composable("signup") { OnBoardingScreen(navController) }
+        composable("signup") { RegisterScreen(navController) }
         composable("home") { HomePage(navController) }
         composable("analyze") { AnalisisPage(navController, context) }
         composable("imports") { ImportsPage(navController) }
         composable("configs") { ConfigsPage(navController) }
+        composable("profile") { ProfilePage(navController) }
+        composable("onboarding") { OnBoardingScreen(navController) }
     }
 }

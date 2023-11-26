@@ -81,7 +81,7 @@ fun ConfigsPage(navController: NavController) {
             Row(
                 Modifier
                     .clickable {
-                    navController.navigate("home")
+                    navController.navigate("profile")
                 },
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.End

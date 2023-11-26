@@ -1,4 +1,4 @@
-package com.example.kotlin_app.presentation.register.components
+package com.example.kotlin_app.presentation.onboarding.components
 
 
 import androidx.compose.foundation.background

@@ -30,7 +30,6 @@ import com.example.kotlin_app.presentation.configs.ConfigsPage
 import com.example.kotlin_app.presentation.home.HomePage
 import com.example.kotlin_app.presentation.imports.ImportsPage
 import com.example.kotlin_app.presentation.login.LoginPage
-import com.example.kotlin_app.presentation.register.OnBoardingScreen
 import com.example.kotlin_app.presentation.shared.navbar.Navbar
 import com.example.kotlin_app.ui.theme.KotlinappTheme
 import com.example.kotlin_app.utils.AppNavHost
@@ -46,7 +45,7 @@ class MainActivity : ComponentActivity() {
             KotlinappTheme {
                 val navController: NavHostController = rememberNavController()
                 val context = LocalContext.current
-                AppNavHost(navController = navController, startDestination = "imports", context = context)
+                AppNavHost(navController = navController, startDestination = "signin", context = context)
             }
         }
     }
